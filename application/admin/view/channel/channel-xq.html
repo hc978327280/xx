@@ -1,0 +1,169 @@
+{include file="public/_meta"}
+
+
+<title>添加渠道用户</title>
+</head>
+<body>
+<article class="page-container">
+		<div class="form form-horizontal">
+				<div class="row cl">
+						<label class="form-label col-xs-2"><span class="c-red">*</span>ID：</label>
+						<div class="formControls col-xs-4">
+							<td class="input-text">{$cha_list.channel_id}</td>
+						
+						</div>
+						
+					</div>
+			<div class="row cl">
+					<label class="form-label col-xs-2"><span class="c-red">*</span>姓名：</label>
+					<div class="formControls col-xs-4">
+						<input type="text" class="input-text" value="{$cha_list.channel_user_name}" placeholder="必须中文" id="channel_user_name" name="channel_user_name" readonly>
+					</div>
+					<label class="form-label col-xs-2"><span class="c-red">*</span>公司名：</label>
+					<div class="formControls col-xs-4">
+						<input type="text" class="input-text" value="{$cha_list.channel_company}" placeholder="必须中文" id="channel_company" name="channel_company" readonly>
+					</div>
+				</div>
+				<div class="row cl">
+					<label class="form-label col-xs-2"><span class="c-red">*</span>渠道名：</label>
+					<div class="formControls col-xs-4">
+						<input type="text" class="input-text" value="{$cha_list.channerl_name}" placeholder="必须中文" id="channerl_name" name="channerl_name" readonly>
+					</div>
+					<label class="form-label col-xs-2"><span class="c-red">*</span>登陆账号：</label>
+					<div class="formControls col-xs-4">
+						<input type="text" class="input-text" value="{$cha_list.channel_login}" placeholder="请输入字母加数字" id="channel_login" name="channel_login" readonly>
+					</div>
+				</div>
+				<div class="row cl">
+					<label class="form-label col-xs-2"><span class="c-red">*</span>登陆密码：</label>
+					<div class="formControls col-xs-4">
+						<input type="text" class="input-text" value="{$cha_list.channel_mima}" placeholder="以字母开头，长度在6-12之间" id="channel_pwd" name="channel_pwd" readonly>
+						<div>
+							<button class="layui-btn layui-btn-xs" onclick="member_del(this,'{$cha_list.channel_id}')">重置密码</button>
+						</div>
+					</div>
+					<label class="form-label col-xs-2"><span class="c-red">*</span>微信号：</label>
+					<div class="formControls col-xs-4">
+						<input type="text" class="input-text" value="{$cha_list.channel_vx}" placeholder="单行输入" id="channel_vx" name="channel_vx" readonly>
+					</div>
+				</div>
+				<div class="row cl">
+					<label class="form-label col-xs-2"><span class="c-red">*</span>手机号：</label>
+					<div class="formControls col-xs-4">
+						<input type="text" class="input-text" value="{$cha_list.channel_phone}" placeholder="单行输入" id="channel_phone" name="channel_phone" readonly>
+					</div>
+					<label class="form-label col-xs-2"><span class="c-red">*</span>QQ号：</label>
+					<div class="formControls col-xs-4">
+						<input type="text" class="input-text" value="{$cha_list.channel_qq}" placeholder="单行输入" id="channel_qq" name="channel_qq" readonly>
+					</div>
+				</div>
+				<div class="row cl">
+					<label class="form-label col-xs-2"><span class="c-red">*</span>性别：</label>
+					<div class="formControls col-xs-4 "> <span class="select-box">
+						<select class="select" size="1" name="channel_sex" readonly>
+							<option value="1">男</option>
+							<option value="0">女</option>
+						</select>
+						</span> </div>
+						<label class="form-label col-xs-2"><span class="c-red">*</span>用户权限：</label>
+						<div class="formControls col-xs-4 "> <span class="select-box" readonly>
+							<select class="select" size="1" name="jur_id">
+								<option value="1">男</option>
+								<option value="2">女</option>
+							</select>
+							</span> </div>
+				</div>
+		<!-- <div class="row cl">
+				<label class="form-label col-xs-2"><span class="c-red">*</span>添加人:</label>
+				<div class="formControls col-xs-4">
+					<td>sss</td>
+				</div>
+				<label class="form-label col-xs-2"><span class="c-red">*</span>添加时间:</label>
+				<div class="formControls col-xs-4">
+					<td>sss</td>
+				</div>
+			</div>
+			<div class="row cl">
+					<label class="form-label col-xs-2"><span class="c-red">*</span>超级会长:</label>
+					<div class="formControls col-xs-4">
+						<td>sss</td>
+					</div>
+					<label class="form-label col-xs-2"><span class="c-red">*</span>锁定登陆:</label>
+						<div class="formControls col-xs-4">
+										<input name="sex" type="radio" id="sex-1" checked>
+										<label for="sex-1">是</label>
+										<input type="radio" id="sex-2" name="sex">
+										<label for="sex-2">否</label>
+								</div>
+						</div>
+						
+				</div>
+				<div class="row cl">
+						<label class="form-label col-xs-2"><span class="c-red">*</span>锁定原因:</label>
+						<div class="formControls col-xs-4">
+								<input type="text" class="input-text" value="" placeholder="单行输入" id="" name="" readonly>
+						</div>
+					</div> -->
+		<div class="row cl">
+			<div class="col-xs-12">
+				<center><input class="btn btn-primary radius"  onClick="change_ed('编辑','/admin/channel/edit/id/{$cha_list.channel_id}','4','','510')" type="submit" value="&nbsp;&nbsp;编辑&nbsp;&nbsp;"></center>
+			</div>
+		</div>
+	</div>
+
+</article>
+
+<!--_footer 作为公共模版分离出去-->
+{include file="public/_footer"}
+
+
+<!--请在下方写此页面业务相关的脚本--> 
+<script type="text/javascript" src="{$Think.config.__ADMIN__}lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="{$Think.config.__ADMIN__}lib/jquery.validation/1.14.0/jquery.validate.js"></script> 
+<script type="text/javascript" src="{$Think.config.__ADMIN__}lib/jquery.validation/1.14.0/validate-methods.js"></script> 
+<script type="text/javascript" src="{$Think.config.__ADMIN__}lib/jquery.validation/1.14.0/messages_zh.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+	
+	
+});
+/*用户-密码重置*/
+function member_del(obj,id){
+	layer.confirm('确认要重置吗？',function(index){
+		var a=$('#cz').val()
+		console.log(a)
+		$.ajax({
+			type: 'POST',
+			url: '',
+			// data:{pid:$('#cz').val()},
+			dataType: 'json',
+			success: function(data){
+				if (data.code==200) {
+					$(obj).parents("tr").remove();
+					layer.msg('已重置!',{icon:1,time:1000});
+				}else{
+					$(obj).parents("tr").remove();
+					layer.msg('重置失败!',{icon:5,time:1000});
+				}
+				
+			},
+			error:function(data) {
+				// console.log(data.msg);
+			},
+		});		
+	});
+}
+//编辑
+function change_ed(title,url,id,w,h){
+	// layer_show(title,url,w,h);	
+	window.parent.postMessage({action:"open_edit",param:{title:title,url:url,w:w,h:h}}, "*");
+}
+</script> 
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+</html>

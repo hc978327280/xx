@@ -4,48 +4,77 @@
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 用户中心 <span class="c-gray en">&gt;</span> 用户管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
-	
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="member_add('添加用户','add','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加用户</a><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 导出</a></span> <span class="r">共有数据：<strong>88</strong> 条</span> </div>
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="member_add('添加用户','add','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加用户</a><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 导出</a></span>  </div>
 	<div class="mt-20">
 	<table class="table table-border table-bordered table-hover table-bg table-sort">
 		<thead>
 			<tr class="text-c">
-				<th width="25"><input type="checkbox" name="" value=""></th>
+				<th width="25"><input type="checkbox" name="" value="" id="sm"></th>
 				<th width="80">ID</th>
-				<th width="100">姓名</th>
+				<th width="100">登陆账户</th>
 				<th width="40">性别</th>
-				<th width="90">手机</th>
-				<th width="150">游戏类型</th>
-				<th width="">区域</th>
-				<th width="">渠道</th>
-				<th width="">会长</th>
-				<th width="">超级会长</th>
-				<th width="130">操作时间</th>
+				<th width="90">渠道名</th>
+				<th width="150">添加时间</th>
+				<th width="">添加人</th>
+				<th width="">操作时间</th>
 				<th width="">操作人</th>
+				<th width="">审核状态</th>
 				<th width="100">操作</th>
 			</tr>
 		</thead>
+	<!-- <form action="chk" method="POST"> -->
+
 		<tbody>
 			{volist name='channel_list' id='vo'}
 			<tr class="text-c">
-				<td><input type="checkbox" value="{$vo.channel_id}" name="channel_id"></td>
+				<td><input type="checkbox" value="{$vo.channel_id}" name="channel_id[]"></td>
 				<td>{$vo.channel_id}</td>
-				<td>{$vo.channel_user_name}</td>
-				<td>男</td>
-				<td>13000000000</td>
-				<td>admin@mail.com</td>
-				<td>北京市 海淀区</td>
-				<td>北京市 海淀区</td>
-				<td>北京市 海淀区</td>
-				<td>北京市 海淀区</td>
-				<td>2014-6-11 11:11:42</td>
-				<td>已启用</td>
-				<td class="td-manage"><a style="text-decoration:none" onClick="member_stop(this,'10001')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="member_edit('编辑','member-add.html','4','','510')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="change_password('修改密码','change-password.html','10001','600','270')" href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+				<td>{$vo.channel_login}</td>
+				<td>{$vo.channel_sex|sex}</td>
+				<td>{$vo.channerl_name}</td>
+				<td>{$vo.add_time}</td>
+				<td>{$vo.uid}</td>
+				<td>{$vo.user_time}</td>
+				<td>{$vo.uid}</td>
+				<td class="td-status"><span class="label label-success radius">{$vo.audit|audit}</span></td>
+				<!-- <i class="Hui-iconfont">&#xe631;</i><a style="text-decoration:none" onClick="member_stop(this,'10001')" href="javascript:;" title="停用"></a> -->
+				<td class="td-manage"></a> 
+					<a title="详情" href="javascript:;" onclick="member_edit('详情','deta/id/{$vo.channel_id}','4','','510')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> 
+					<a style="text-decoration:none" class="ml-5" onClick="change_password('编辑','edit/id/{$vo.channel_id}','4','','510')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe63f;</i></a> 
+					<a title="删除" href="javascript:;" onclick="member_del(this,'{$vo.channel_id}')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
 			</tr>
 			{/volist}
 		</tbody>
 	</table>
-	</div>
+	<div style="height: 10px;">&nbsp;</div>
+   		<div class="page-container">
+			<div class="row cl">
+					<!-- <div class="col-sm-1">
+							<button  class="layui-btn"  id="qx">全选</button>
+						</div> -->
+					<div class="formControls col-sm-1 " style="margin-top:5px;"> 
+						<span class="select-box">
+							<select class="select" size="1" name="audit" id="sh">
+								<option value="1">审核中</option>
+								<option value="0">未通过</option>
+								<option value="2">通过</option>
+							</select>
+						</span> 
+					</div>
+					<div class="col-sm-1">
+							<button  class="layui-btn" style="margin-left: -30px;" id="pi" onclick="member_pl()">批量操作</button>
+						</div>
+			</div>
+				
+			<div class="footer">{$channel_list->render()}</div>
+								
+							
+							 
+					
+							
+		</div>
+		
+	<!-- </form> -->
 </div>
 <!--_footer 作为公共模版分离出去-->
 {include file="public/_footer"}
@@ -54,17 +83,39 @@
 <!-- <script type="text/javascript" src="{$Think.config.__ADMIN__}lib/datatables/1.10.0/jquery.dataTables.min.js"></script>  -->
 <script type="text/javascript" src="{$Think.config.__ADMIN__}lib/laypage/1.2/laypage.js"></script>
 <script type="text/javascript">
-$(function(){
-	$('.table-sort').dataTable({
-		"aaSorting": [[ 1, "desc" ]],//默认第几个排序
-		"bStateSave": true,//状态保存
-		"aoColumnDefs": [
-		  //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
-		  {"orderable":false,"aTargets":[0,8,9]}// 制定列不参与排序
-		]
-	});
+
+//批量修改审核状态
+function member_pl(){
+	layer.confirm('确认执行吗？',function(index){
+		
+		//获取所有的checkbox
+		var checkID=''
+		var ches=$("input[type='checkbox']");
+		var sh=$('#sh').val()
+		//遍历所有的checkbox,重设选中状态为选中
+		ches.each(function(i){
+			if ($(this).prop("checked")) {
+				checkID=checkID+','+$(this).val()
+			}
+			
+		});
+		$.ajax({
+				url:'chk',
+				type:'post',
+				data:{id:checkID,aid:sh},
+				dataType:'json',
+				success:function(data){
+					if (data.code==200) {
+						
+						layer.msg('操作成功!',{icon:1,time:1000});
+						location.reload();//刷新当前页面
+					}
+									}
+				})
 	
-});
+	});
+}
+
 /*用户-添加*/
 function member_add(title,url,w,h){
 	layer_show(title,url,w,h);
@@ -73,48 +124,10 @@ function member_add(title,url,w,h){
 function member_show(title,url,id,w,h){
 	layer_show(title,url,w,h);
 }
-/*用户-停用*/
-// function member_stop(obj,id){
-// 	layer.confirm('确认要停用吗？',function(index){
-// 		$.ajax({
-// 			type: 'POST',
-// 			url: '',
-// 			dataType: 'json',
-// 			success: function(data){
-// 				$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_start(this,id)" href="javascript:;" title="启用"><i class="Hui-iconfont">&#xe6e1;</i></a>');
-// 				$(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
-// 				$(obj).remove();
-// 				layer.msg('已停用!',{icon: 5,time:1000});
-// 			},
-// 			error:function(data) {
-// 				console.log(data.msg);
-// 			},
-// 		});		
-// 	});
-// }
 
-/*用户-启用*/
-function member_start(obj,id){
-	layer.confirm('确认要启用吗？',function(index){
-		$.ajax({
-			type: 'POST',
-			url: '',
-			dataType: 'json',
-			success: function(data){
-				$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_stop(this,id)" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a>');
-				$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
-				$(obj).remove();
-				layer.msg('已启用!',{icon: 6,time:1000});
-			},
-			error:function(data) {
-				console.log(data.msg);
-			},
-		});
-	});
-}
-/*用户-编辑*/
+/*用户-详情*/
 function member_edit(title,url,id,w,h){
-	layer_show(title,url,w,h);
+	var mylay=layer_show(title,url,w,h);
 }
 /*密码-修改*/
 function change_password(title,url,id,w,h){
@@ -125,11 +138,15 @@ function member_del(obj,id){
 	layer.confirm('确认要删除吗？',function(index){
 		$.ajax({
 			type: 'POST',
-			url: '',
+			url: 'del',
+			data:{id},
 			dataType: 'json',
 			success: function(data){
-				$(obj).parents("tr").remove();
-				layer.msg('已删除!',{icon:1,time:1000});
+				if (data.code==200) {
+					$(obj).parents("tr").remove();
+					layer.msg('已删除!',{icon:1,time:1000});
+				}
+				
 			},
 			error:function(data) {
 				console.log(data.msg);
@@ -137,6 +154,19 @@ function member_del(obj,id){
 		});		
 	});
 }
+window.addEventListener("message", function(event){
+	if(event.data.action == 'open_edit'){
+		var title=event.data.param.title
+		,url=event.data.param.url
+		,w=event.data.param.w
+		,h=event.data.param.h;
+		layer.closeAll();
+		layer_show(title,url,w,h);	
+	}
+
+}, false);
+//批量修改审核状态
+
 </script> 
 </body>
 </html>

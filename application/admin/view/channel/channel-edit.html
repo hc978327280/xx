@@ -1,0 +1,196 @@
+{include file="public/_meta"}
+
+
+<title>添加渠道用户</title>
+</head>
+<body>
+<article class="page-container">
+	<form action="" method="post" class="form form-horizontal" id="form-member-add">
+			<div class="row cl">
+					<label class="form-label col-xs-2"><span class="c-red">*</span>ID：</label>
+					<div class="formControls col-xs-4">
+						<td class="input-text">{$cha_list.channel_id}</td>
+					
+					</div>
+					
+				</div>
+		<div class="row cl">
+				<label class="form-label col-xs-2"><span class="c-red">*</span>姓名：</label>
+				<div class="formControls col-xs-4">
+					<input type="text" class="input-text" value="{$cha_list.channel_user_name}" placeholder="必须中文" id="channel_user_name" name="channel_user_name" >
+				</div>
+				<label class="form-label col-xs-2"><span class="c-red">*</span>公司名：</label>
+				<div class="formControls col-xs-4">
+					<input type="text" class="input-text" value="{$cha_list.channel_company}" placeholder="必须中文" id="channel_company" name="channel_company" >
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-2"><span class="c-red">*</span>渠道名：</label>
+				<div class="formControls col-xs-4">
+					<input type="text" class="input-text" value="{$cha_list.channerl_name}" placeholder="必须中文" id="channerl_name" name="channerl_name" >
+				</div>
+				<label class="form-label col-xs-2"><span class="c-red">*</span>登陆账号：</label>
+				<div class="formControls col-xs-4">
+					<input type="text" class="input-text" value="{$cha_list.channel_login}" placeholder="请输入字母加数字" id="channel_login" name="channel_login" >
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-2"><span class="c-red">*</span>登陆密码：</label>
+				<div class="formControls col-xs-4">
+					<input type="text" class="input-text" value="{$cha_list.channel_mima}" placeholder="以字母开头，长度在6-12之间" id="channel_pwd" name="channel_pwd" >
+				
+				</div>
+				<label class="form-label col-xs-2"><span class="c-red">*</span>微信号：</label>
+				<div class="formControls col-xs-4">
+					<input type="text" class="input-text" value="{$cha_list.channel_vx}" placeholder="单行输入" id="channel_vx" name="channel_vx" >
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-2"><span class="c-red">*</span>手机号：</label>
+				<div class="formControls col-xs-4">
+					<input type="text" class="input-text" value="{$cha_list.channel_phone}" placeholder="单行输入" id="channel_phone" name="channel_phone" >
+				</div>
+				<label class="form-label col-xs-2"><span class="c-red">*</span>QQ号：</label>
+				<div class="formControls col-xs-4">
+					<input type="text" class="input-text" value="{$cha_list.channel_qq}" placeholder="单行输入" id="channel_qq" name="channel_qq" >
+				</div>
+			</div>
+					{php}
+                            $nan=$nv='';
+                            switch($cha_list['channel_sex']){
+                            case 0:
+                            $nv='selected';
+                            break;
+                            case 1:
+                            $nan='selected';
+                            break;
+                            }
+                        {/php}
+			<div class="row cl">
+				<label class="form-label col-xs-2"><span class="c-red">*</span>性别：</label>
+				<div class="formControls col-xs-4 "> <span class="select-box">
+					<select class="select" size="1" name="channel_sex" >
+						<option value="1" {$nan}>男</option>
+						<option value="0" {$nv}>女</option>
+					</select>
+					</span> </div>
+					<label class="form-label col-xs-2"><span class="c-red">*</span>用户权限：</label>
+					<div class="formControls col-xs-4 "> <span class="select-box" >
+						<select class="select" size="1" name="jur_id">
+							<option value="1">男</option>
+							<option value="2">女</option>
+						</select>
+						</span> </div>
+			</div>
+	<!-- <div class="row cl">
+			<label class="form-label col-xs-2"><span class="c-red">*</span>添加人:</label>
+			<div class="formControls col-xs-4">
+				<td>sss</td>
+			</div>
+			<label class="form-label col-xs-2"><span class="c-red">*</span>添加时间:</label>
+			<div class="formControls col-xs-4">
+				<td>sss</td>
+			</div>
+		</div>
+		<div class="row cl">
+				<label class="form-label col-xs-2"><span class="c-red">*</span>超级会长:</label>
+				<div class="formControls col-xs-4">
+					<td>sss</td>
+				</div>
+				<label class="form-label col-xs-2"><span class="c-red">*</span>锁定登陆:</label>
+					<div class="formControls col-xs-4">
+									<input name="sex" type="radio" id="sex-1" checked>
+									<label for="sex-1">是</label>
+									<input type="radio" id="sex-2" name="sex">
+									<label for="sex-2">否</label>
+							</div>
+					</div>
+					
+			</div>
+			<div class="row cl">
+					<label class="form-label col-xs-2"><span class="c-red">*</span>锁定原因:</label>
+					<div class="formControls col-xs-4">
+							<input type="text" class="input-text" value="" placeholder="单行输入" id="" name="" readonly>
+					</div>
+				</div> -->
+	<div class="row cl">
+		<div class="col-xs-12">
+			<center><input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;保存&nbsp;&nbsp;"></center>
+		</div>
+	</div>
+	</form>
+</article>
+
+<!--_footer 作为公共模版分离出去-->
+{include file="public/_footer"}
+
+
+<!--请在下方写此页面业务相关的脚本--> 
+<script type="text/javascript" src="{$Think.config.__ADMIN__}lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="{$Think.config.__ADMIN__}lib/jquery.validation/1.14.0/jquery.validate.js"></script> 
+<script type="text/javascript" src="{$Think.config.__ADMIN__}lib/jquery.validation/1.14.0/validate-methods.js"></script> 
+<script type="text/javascript" src="{$Think.config.__ADMIN__}lib/jquery.validation/1.14.0/messages_zh.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+	
+	$("#form-member-add").validate({
+		rules:{
+			// username:{
+			// 	required:true,
+			// 	minlength:2,
+			// 	maxlength:16
+			// },
+			// sex:{
+			// 	required:true,
+			// },
+			// mobile:{
+			// 	required:true,
+			// 	isMobile:true,
+			// },
+			// email:{
+			// 	required:true,
+			// 	email:true,
+			// },
+			// uploadfile:{
+			// 	required:true,
+			// },
+			
+		},
+		onkeyup:false,
+		focusCleanup:true,
+		success:"valid",
+		submitHandler:function(form){
+			$(form).ajaxSubmit({
+				dataType:"json",
+				success: function(data) { 
+						if (data.code==404) {
+							layer.open({
+								title: '提示'
+								,content: '手机号已存在'
+								});     
+						}else if(data.code==200){
+							layer.open({
+								title: '提示'
+								,content: '添加成功'
+								});     
+							layer.closeAll();
+							window.parent.location.reload();
+						}
+				
+				}
+			});
+			var index = parent.layer.getFrameIndex(window.name);
+			//parent.$('.btn-refresh').click();
+			// parent.layer.close(index);
+		}
+	});
+});
+</script> 
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+</html>

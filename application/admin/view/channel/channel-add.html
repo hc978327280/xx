@@ -29,7 +29,8 @@
 		<div class="row cl">
 			<label class="form-label col-xs-2"><span class="c-red">*</span>登陆密码：</label>
 			<div class="formControls col-xs-4">
-				<input type="password"" class="input-text" value="" placeholder="以字母开头，长度在6-12之间" id="channel_pwd" name="channel_pwd">
+				<input type="password" class="input-text" value="" placeholder="以字母开头，长度在6-12之间" id="channel_pwd" name="channel_pwd">
+				
 			</div>
 			<label class="form-label col-xs-2"><span class="c-red">*</span>微信号：</label>
 			<div class="formControls col-xs-4">
@@ -145,7 +146,8 @@ $(function(){
 							// 	title: '提示'
 							// 	,content: '添加成功'
 							// 	});     
-							parent.layer.close(index);
+							layer.close(index);
+							window.parent.location.reload();
 						}
 				
 				}
