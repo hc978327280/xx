@@ -15,6 +15,11 @@ class Channel extends Controller{
         $this -> assign('page',$data['page']);
         return $this->fetch('channel-list',['channel_list'=>$channel_list]);
     }
+    //权限列表
+    private function auth(){
+        $auth=Db::name('role')->where('is_del',0)->select();
+        return $auth;
+    }
     //渠道用户添加
     public function add(){
         if (request()->isPost()) {
@@ -44,7 +49,8 @@ class Channel extends Controller{
             }
             
         }else{
-            return $this->fetch('channel-add');
+            $au=$this->auth();
+            return $this->fetch('channel-add',['auth'=>$au]);
         }
     }
     public function return_msg($code,$msg='',$data=[]){

@@ -58,8 +58,9 @@
 				<label class="form-label col-xs-2"><span class="c-red">*</span>用户权限：</label>
 				<div class="formControls col-xs-4 "> <span class="select-box">
 					<select class="select" size="1" name="jur_id">
-						<option value="1">男</option>
-						<option value="2">女</option>
+						{volist name='auth' id='vo'}
+						<option value="{$vo.role_id}">{$vo.role_name}</option>
+						{/volist}
 					</select>
 					</span> </div>
 		</div>

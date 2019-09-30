@@ -33,3 +33,9 @@ function audit($audit){
         }
         return $audit;
 }
+/**
+ * 内外部权限
+ */
+function nw($nw){
+    return $nw?'内部':'外部';
+}

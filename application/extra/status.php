@@ -6,7 +6,7 @@ return [
     'status_sex'=>1,  //性别
     'is_lock'=>1,   //是否锁定
     'audit'=>1,    //待审
-    'inside'=>1,    //内外部权限
+    'nw'=>1,    //内外部权限
 ];
 
 
